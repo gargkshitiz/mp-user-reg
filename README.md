@@ -3,6 +3,7 @@
 ## Tech stack
 - Java
 - Spring Boot
+- Thymyleaf
 - Swagger (for REST API documentation)
 - Jackson
 - Maven
