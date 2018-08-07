@@ -53,4 +53,4 @@ The app will start running at <http://localhost:8080/mp/>.
 <http://localhost:8080/mp/swagger-ui.html>
 
 ## Swagger snapshot
-![image](https://user-images.githubusercontent.com/5894094/43207744-5b0e8014-9046-11e8-8fa2-5c871347f759.png)
+![image](https://user-images.githubusercontent.com/5894094/43763486-7a344bac-9a48-11e8-9cc1-d0f3b8fda5bc.png)
