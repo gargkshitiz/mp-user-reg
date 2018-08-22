@@ -22,7 +22,7 @@
 git clone https://github.com/gargkshitiz/mp-user-reg.git
 ```
 
-**3. Build and run the app using maven**
+**2. Build and run the app using maven**
 
 ```bash
 mvn package
@@ -38,7 +38,7 @@ mvn spring-boot:run
 
 The app will start running at <http://localhost:8080/mp/>.
 
-## Registration Link
+## User Registration Link
 http://localhost:8080/mp/registration
 
 ## Swagger URI for APIs
