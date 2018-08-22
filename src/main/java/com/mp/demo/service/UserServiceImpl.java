@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.mp.demo.model.Address;
 import com.mp.demo.model.Role;
 import com.mp.demo.model.User;
 import com.mp.demo.repo.UserRepository;
@@ -33,14 +34,20 @@ public class UserServiceImpl implements UserService {
     }
 
     public User save(UserRegistrationDto registration){
-        User user = new User();
-        user.setFirstName(registration.getFirstName());
-        user.setLastName(registration.getLastName());
-        user.setEmail(registration.getEmail());
-        user.setPassword(passwordEncoder.encode(registration.getPassword()));
+		User user = new User(registration.getFirstName(), registration.getLastName(), registration.getEmail(),
+				passwordEncoder.encode(registration.getPassword()), getAddress(registration));
         user.setRoles(Arrays.asList(new Role("ROLE_USER")));
         return userRepository.save(user);
     }
+
+	private Address getAddress(UserRegistrationDto registration) {
+		Address address = new Address();
+        address.setStreetAddress(registration.getStreetAddress());
+        address.setCity(registration.getCity());
+        address.setState(registration.getState());
+        address.setZipCode(registration.getZipCode());
+        return address;
+	}
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

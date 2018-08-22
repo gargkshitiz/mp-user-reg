@@ -1,6 +1,10 @@
 package com.mp.demo.model;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Collection;
 /**
  * @author Kshitiz Garg
@@ -10,7 +14,7 @@ import java.util.Collection;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String firstName;
@@ -28,25 +32,18 @@ public class User {
     private Collection<Role> roles;
 
 	@JoinColumn(name = "address_id")
-	@OneToOne(cascade = CascadeType.ALL, optional = true, orphanRemoval=true)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval=true)
 	private Address address;
 	
     public User() {
     }
 
-    public User(String firstName, String lastName, String email, String password) {
+    public User(String firstName, String lastName, String email, String password, Address address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-    }
-
-    public User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-        this.roles = roles;
+		this.address = address;
     }
 
     public Long getId() {
@@ -81,6 +78,8 @@ public class User {
         this.email = email;
     }
 
+    @JsonIgnore
+    @JsonProperty(value = "password")
     public String getPassword() {
         return password;
     }
@@ -97,7 +96,15 @@ public class User {
         this.roles = roles;
     }
 
-    @Override
+    public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	@Override
     public String toString() {
         return "User{" +
                 "id=" + id +

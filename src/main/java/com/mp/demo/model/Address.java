@@ -29,13 +29,13 @@ public class Address {
     @Column
     private String state;
     @Column
-    private long zipCode;
+    private String zipCode;
 	
 	public Address() {
 		super();
 	}
 	
-	public Address(String streetAddress, String city, String state, long zipCode) {
+	public Address(String streetAddress, String city, String state, String zipCode) {
 		this.streetAddress = streetAddress;
 		this.city = city;
 		this.state = state;
@@ -66,11 +66,11 @@ public class Address {
 		this.state = state;
 	}
 
-	public long getZipCode() {
+	public String getZipCode() {
 		return zipCode;
 	}
 
-	public void setZipCode(long zipCode) {
+	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
 
