@@ -22,18 +22,7 @@
 git clone https://github.com/gargkshitiz/mp-user-reg.git
 ```
 
-**2. Create Mysql database**
-```bash
-create database mp_app
-```
-
-**3. Change mysql username and password as per your installation**
-
-+ open `src/main/resources/application.properties`
-
-+ change `spring.datasource.username` and `spring.datasource.password` as per your mysql installation
-
-**4. Build and run the app using maven**
+**3. Build and run the app using maven**
 
 ```bash
 mvn package
@@ -49,9 +38,12 @@ mvn spring-boot:run
 
 The app will start running at <http://localhost:8080/mp/>.
 
-## Swagger URI
+## Registration Link
+http://localhost:8080/mp/registration
+
+## Swagger URI for APIs
 
 <http://localhost:8080/mp/swagger-ui.html>
 
 ## Swagger snapshot
-![image](https://user-images.githubusercontent.com/5894094/43763486-7a344bac-9a48-11e8-9cc1-d0f3b8fda5bc.png)
+![image](https://user-images.githubusercontent.com/5894094/44460553-29ce7180-a62b-11e8-84f6-07c3e00ddc68.png)
